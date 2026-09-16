@@ -1,0 +1,14 @@
+# Archivos compilados y generados por NetBeans/Ant
+build/
+dist/
+*.class
+*.war
+
+# Configuracion local de cada integrante (rutas de su PC)
+nbproject/private/
+
+# Sistema operativo / editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
