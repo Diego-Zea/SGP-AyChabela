@@ -1,0 +1,548 @@
+/* ============================================================
+   SGP Ay Chabela - Hoja de estilos basica
+   Version Java Web (JSP)
+   ============================================================ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #F0F4F8;
+    color: #1E293B;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ── HEADER / MENU SUPERIOR ───────────────────────────────── */
+.header {
+    background: #1A1A2E;
+    color: #FFFFFF;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.header h1 {
+    font-size: 20px;
+    color: #E94560;
+}
+
+.nav {
+    background: #16213E;
+    padding: 0 24px;
+    display: flex;
+    gap: 4px;
+    border-bottom: 3px solid #E94560;
+}
+
+.nav a {
+    color: #FFFFFF;
+    padding: 12px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    transition: background 0.2s;
+}
+
+.nav a:hover     { background: #0F3460; }
+.nav a.activo    { background: #E94560; border-bottom-color: #FFFFFF; }
+
+.user-info {
+    font-size: 13px;
+    color: #CBD5E1;
+}
+
+.user-info a {
+    color: #E94560;
+    margin-left: 12px;
+    font-weight: 600;
+}
+
+/* ── CONTENEDOR ───────────────────────────────────────────── */
+.contenedor {
+    max-width: 1200px;
+    margin: 24px auto;
+    padding: 0 24px;
+}
+
+.titulo-pagina {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1A1A2E;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ── TARJETAS ─────────────────────────────────────────────── */
+.card {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+}
+
+/* ── TABLAS ───────────────────────────────────────────────── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+thead {
+    background: #1A1A2E;
+    color: #FFFFFF;
+}
+
+th, td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid #E2E8F0;
+    font-size: 14px;
+}
+
+tbody tr:hover { background: #F8FAFC; }
+
+/* ── BOTONES ──────────────────────────────────────────────── */
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-primary   { background: #E94560; color: #FFFFFF; }
+.btn-primary:hover   { background: #C0392B; }
+
+.btn-secondary { background: #CBD5E1; color: #1E293B; }
+.btn-secondary:hover { background: #94A3B8; }
+
+.btn-success   { background: #27AE60; color: #FFFFFF; }
+.btn-success:hover   { opacity: 0.9; }
+
+.btn-warning   { background: #F39C12; color: #FFFFFF; }
+.btn-warning:hover   { opacity: 0.9; }
+
+.btn-danger    { background: #C0392B; color: #FFFFFF; }
+.btn-danger:hover    { opacity: 0.9; }
+
+.btn-sm { padding: 5px 10px; font-size: 12px; }
+
+/* ── FORMULARIOS ──────────────────────────────────────────── */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 9px 12px;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #FFFFFF;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: #E94560; }
+
+.form-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+/* ── ETIQUETAS DE ESTADO ──────────────────────────────────── */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge-libre        { background: #27AE60; color: #FFFFFF; }
+.badge-ocupada      { background: #E94560; color: #FFFFFF; }
+.badge-lista        { background: #F39C12; color: #FFFFFF; }
+.badge-pendiente    { background: #F39C12; color: #FFFFFF; }
+.badge-preparacion  { background: #0F3460; color: #FFFFFF; }
+.badge-listo        { background: #27AE60; color: #FFFFFF; }
+.badge-entregado    { background: #16213E; color: #FFFFFF; }
+.badge-cancelado    { background: #94A3B8; color: #FFFFFF; }
+.badge-disponible   { background: #27AE60; color: #FFFFFF; }
+.badge-nodisponible { background: #94A3B8; color: #FFFFFF; }
+
+/* ── MENSAJES ────────────────────────────────────────────── */
+.alert {
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+.alert-error   { background: #FEE2E2; color: #C0392B; border: 1px solid #F5B7B1; }
+.alert-success { background: #D4EFDF; color: #1E8449; border: 1px solid #A9DFBF; }
+.alert-info    { background: #D6EAF8; color: #1A5276; border: 1px solid #AED6F1; }
+
+/* ── LOGIN ────────────────────────────────────────────────── */
+.login-body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1A1A2E 60%, #0F3460);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.login-card {
+    background: #FFFFFF;
+    width: 400px;
+    padding: 40px 32px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+.login-card h2 {
+    color: #1A1A2E;
+    margin-bottom: 6px;
+    font-size: 24px;
+}
+
+.login-card .subtitle {
+    color: #64748B;
+    font-size: 13px;
+    margin-bottom: 24px;
+}
+
+.login-card .brand {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.login-card .brand-title {
+    color: #E94560;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.login-card .brand-sub {
+    color: #64748B;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.btn-block {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+}
+
+/* ── MENU PRINCIPAL ──────────────────────────────────────── */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 12px;
+}
+
+.menu-card {
+    background: #FFFFFF;
+    padding: 24px;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-top: 4px solid #E94560;
+}
+
+.menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.menu-card .icono {
+    font-size: 36px;
+    margin-bottom: 8px;
+}
+
+.menu-card h3 {
+    font-size: 16px;
+    color: #1A1A2E;
+    margin-bottom: 4px;
+}
+
+.menu-card p {
+    font-size: 12px;
+    color: #64748B;
+}
+
+/* ── DETALLES DE PEDIDO ──────────────────────────────────── */
+.fila-detalle {
+    display: grid;
+    grid-template-columns: 2fr 1fr 40px;
+    gap: 10px;
+    align-items: end;
+    margin-bottom: 10px;
+}
+
+.total-box {
+    background: #1A1A2E;
+    color: #FFFFFF;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: right;
+    margin-top: 12px;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MODULOS NUEVOS: Panel de Cocina, Insumos y Reportes
+   ════════════════════════════════════════════════════════════ */
+
+.subtitulo {
+    font-size: 16px;
+    color: #1A1A2E;
+    margin: 22px 0 12px;
+}
+
+.titulo-grafico {
+    font-size: 14px;
+    color: #64748B;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.vacio {
+    text-align: center;
+    padding: 24px;
+    color: #64748B;
+}
+
+/* ── Cajas contadoras (cocina y reportes) ─────────────────── */
+.contadores {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.contador {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 18px 22px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-left: 5px solid #CBD5E1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.contador-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748B;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.contador-num {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1A1A2E;
+}
+
+.contador-pendiente   { border-left-color: #F39C12; }
+.contador-preparacion { border-left-color: #0F3460; }
+.contador-listo       { border-left-color: #27AE60; }
+
+/* ── Tarjetas del panel de cocina ─────────────────────────── */
+.auto-refresh {
+    font-size: 12px;
+    font-weight: 400;
+    color: #64748B;
+    background: #E2E8F0;
+    padding: 5px 12px;
+    border-radius: 12px;
+}
+
+.tarjetas-cocina {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.tarjeta-pedido {
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-top: 5px solid #CBD5E1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Semaforo por tiempo de espera */
+.tarjeta-pedido.tiempo-ok       { border-top-color: #27AE60; }
+.tarjeta-pedido.tiempo-alerta   { border-top-color: #F39C12; }
+.tarjeta-pedido.tiempo-critico  { border-top-color: #C0392B; }
+
+.tarjeta-cab {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tarjeta-cab .mesa {
+    font-size: 19px;
+    font-weight: 800;
+    color: #1A1A2E;
+}
+
+.tarjeta-cab .minutos {
+    font-size: 12px;
+    font-weight: 700;
+    color: #FFFFFF;
+    background: #64748B;
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+.tiempo-alerta  .minutos { background: #F39C12; }
+.tiempo-critico .minutos { background: #C0392B; }
+
+.tarjeta-sub {
+    font-size: 12px;
+    color: #64748B;
+    border-bottom: 1px solid #E2E8F0;
+    padding-bottom: 8px;
+}
+
+.lista-platos {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.lista-platos li {
+    font-size: 14px;
+    color: #1E293B;
+}
+
+.lista-platos li strong {
+    color: #E94560;
+    margin-right: 4px;
+}
+
+.nota-pedido {
+    background: #FEF9E7;
+    border-left: 3px solid #F39C12;
+    padding: 7px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.tarjeta-estado {
+    font-size: 12px;
+    color: #64748B;
+    padding-top: 6px;
+    border-top: 1px solid #E2E8F0;
+}
+
+.form-accion { margin: 0; }
+
+.tarjeta-total {
+    text-align: right;
+    font-size: 13px;
+    color: #64748B;
+    padding-top: 6px;
+    border-top: 1px solid #E2E8F0;
+}
+
+.sin-pedidos {
+    grid-column: 1 / -1;
+    background: #FFFFFF;
+    border-radius: 10px;
+    padding: 48px 24px;
+    text-align: center;
+    color: #64748B;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.sin-pedidos .pista {
+    font-size: 13px;
+    margin-top: 8px;
+    color: #94A3B8;
+}
+
+/* ── Reportes ─────────────────────────────────────────────── */
+.filtro-fechas {
+    display: flex;
+    gap: 14px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+}
+
+.filtro-fechas .form-group { margin-bottom: 0; }
+
+.grid-graficos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+/* ── Insumos ──────────────────────────────────────────────── */
+.form-entrada {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.input-mini {
+    width: 80px;
+    padding: 5px 7px;
+    border: 1.5px solid #CBD5E1;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.acciones-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+/* ── Adaptacion a celular (los meseros usan el movil) ─────── */
+@media (max-width: 768px) {
+    .grid-graficos     { grid-template-columns: 1fr; }
+    .tarjetas-cocina   { grid-template-columns: 1fr; }
+    .nav               { overflow-x: auto; }
+    .form-grid-2       { grid-template-columns: 1fr; }
+}
