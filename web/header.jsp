@@ -14,6 +14,7 @@
     boolean esMesero = "MESERO".equalsIgnoreCase(rol);
     boolean esCocina = "COCINA".equalsIgnoreCase(rol);
     // Permisos por modulo
+    boolean verPlatos   = esAdmin || esMesero || esCocina;
 %>
 <header class="header">
     <h1>Ay Chabela - SGP</h1>
@@ -26,4 +27,7 @@
 
 <nav class="nav">
     <a href="menu.jsp"       class="<%= "menu".equals(paginaActual)     ? "activo" : "" %>">Inicio</a>
+    <% if (verPlatos) { %>
+    <a href="PlatoServlet"   class="<%= "platos".equals(paginaActual)   ? "activo" : "" %>">Platos</a>
+    <% } %>
 </nav>
