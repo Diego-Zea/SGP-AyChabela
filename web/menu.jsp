@@ -34,6 +34,15 @@
     </div>
 
     <div class="menu-grid">
+        <% if (adminMenu || meseroMenu || cocinaMenu) { %>
+        <a href="PlatoServlet">
+            <div class="menu-card">
+                <div class="icono">&#127869;</div>
+                <h3>Platos</h3>
+                <p>Registrar, listar y editar platos</p>
+            </div>
+        </a>
+        <% } %>
     </div>
 </div>
 
