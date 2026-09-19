@@ -5,6 +5,8 @@
 -- =============================================================
 USE aychabela;
 
+SET SQL_SAFE_UPDATES = 0;
+
 ALTER TABLE usuarios ADD COLUMN dni       VARCHAR(15) NOT NULL DEFAULT '' AFTER id;
 ALTER TABLE usuarios ADD COLUMN nombres   VARCHAR(60) NOT NULL DEFAULT '' AFTER dni;
 ALTER TABLE usuarios ADD COLUMN apellidos VARCHAR(60) NOT NULL DEFAULT '' AFTER nombres;
@@ -95,4 +97,4 @@ BEGIN
 END //
 
 DELIMITER ;
-
+SET SQL_SAFE_UPDATES = 1;
