@@ -57,6 +57,7 @@ web/                 Vistas JSP y estilos
 **Avance 1 (APF1) – completado**
 
 | Módulo | Estado |
+|---|---|
 | Inicio y cierre de sesión | Terminado |
 | Gestión de platos | Terminado |
 | Gestión de usuarios | Terminado |
