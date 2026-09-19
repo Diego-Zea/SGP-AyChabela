@@ -25,7 +25,7 @@
                 <th>DNI</th>
                 <th>Nombre</th>
                 <th>Usuario</th>
-                <th>Categoria</th>
+                <th>Rol</th>
                 <th>Estado</th>
                 <th>Acciones</th>
             </tr>
