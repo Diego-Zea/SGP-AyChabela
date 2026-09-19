@@ -15,13 +15,8 @@
     boolean esCocina = "COCINA".equalsIgnoreCase(rol);
     // Permisos por modulo
     boolean verPlatos   = esAdmin || esMesero || esCocina;
-    boolean verPedidos  = esAdmin || esMesero || esCocina;
-    boolean verMesas    = esAdmin || esMesero;
-    boolean verCocina   = esAdmin || esCocina;            
-    boolean verInsumos  = esAdmin || esCocina;             
-    boolean verReportes = esAdmin;                         
     boolean verUsuarios = esAdmin;
-
+%>
 <header class="header">
     <h1>Ay Chabela - SGP</h1>
     <div class="user-info">
@@ -36,24 +31,7 @@
     <% if (verPlatos) { %>
     <a href="PlatoServlet"   class="<%= "platos".equals(paginaActual)   ? "activo" : "" %>">Platos</a>
     <% } %>
-
-    <% if (verPedidos) { %>
-    <a href="PedidoServlet"  class="<%= "pedidos".equals(paginaActual)  ? "activo" : "" %>">Pedidos</a>
-    <% } %>
-    <% if (verCocina) { %>
-    <a href="CocinaServlet"  class="<%= "cocina".equals(paginaActual)   ? "activo" : "" %>">Cocina</a>
-    <% } %>
-    <% if (verMesas) { %>
-    <a href="MesaServlet"    class="<%= "mesas".equals(paginaActual)    ? "activo" : "" %>">Mesas</a>
-    <% } %>
-    <% if (verInsumos) { %>
-    <a href="InsumoServlet"  class="<%= "insumos".equals(paginaActual)  ? "activo" : "" %>">Insumos</a>
-    <% } %>
-    <% if (verReportes) { %>
-    <a href="ReporteServlet" class="<%= "reportes".equals(paginaActual) ? "activo" : "" %>">Reportes</a>
-    <% } %>
     <% if (verUsuarios) { %>
     <a href="UsuarioServlet" class="<%= "usuarios".equals(paginaActual) ? "activo" : "" %>">Usuarios</a>
     <% } %>
-
 </nav>
