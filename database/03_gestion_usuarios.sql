@@ -1,3 +1,8 @@
+-- =============================================================
+-- 03_gestion_usuarios.sql
+-- Agrega DNI, nombres y apellidos a usuarios y los procedimientos
+-- del mantenimiento (listar, obtener, insertar, modificar, eliminar).
+-- =============================================================
 USE aychabela;
 
 ALTER TABLE usuarios ADD COLUMN dni       VARCHAR(15) NOT NULL DEFAULT '' AFTER id;
@@ -81,6 +86,12 @@ BEGIN
         rol = p_rol,
         activo = p_activo
     WHERE id = p_id;
+END //
+
+DROP PROCEDURE IF EXISTS EliminarUsuario //
+CREATE PROCEDURE EliminarUsuario(IN p_id INT)
+BEGIN
+    DELETE FROM usuarios WHERE id = p_id;
 END //
 
 DELIMITER ;
