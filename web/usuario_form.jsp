@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="rol">Categoria *</label>
+                    <label for="rol">Rol *</label>
                     <select id="rol" name="rol" required>
                         <option value="MESERO" <%= esEdicion && "MESERO".equals(u.getRol()) ? "selected" : "" %>>Mesero</option>
                         <option value="COCINA" <%= esEdicion && "COCINA".equals(u.getRol()) ? "selected" : "" %>>Cocina</option>
