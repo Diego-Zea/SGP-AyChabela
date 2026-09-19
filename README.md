@@ -36,7 +36,7 @@ El restaurante Ay Chabela registra los pedidos de sus clientes de forma manual, 
    ```bash
    git clone https://github.com/Diego-Zea/SGP-AyChabela.git
    ```
-2. Ejecutar en MySQL los scripts de la carpeta `database/` **en orden numérico** (`01_`, `02_`, ...).
+2. Ejecutar en MySQL los scripts de la carpeta `database/` en este orden: `01_usuarios_login.sql`, `02_platos.sql` y `03_gestion_usuarios.sql`.
 3. Revisar usuario y contraseña de MySQL en `src/java/capaDatos/ConexionBD.java`.
 4. Abrir el proyecto en NetBeans, seleccionar Tomcat 9 como servidor y ejecutar (Run).
 5. Ingresar con un usuario de prueba: `admin / admin123`.
@@ -54,13 +54,10 @@ web/                 Vistas JSP y estilos
 
 ## Estado del proyecto
 
-**Avance 1 (APF1) – en desarrollo**
+**Avance 1 (APF1) – completado**
 
 | Módulo | Estado |
-|---|---|
-| Inicio y cierre de sesión | En desarrollo |
+| Inicio y cierre de sesión | Terminado |
+| Gestión de platos | Terminado |
+| Gestión de usuarios | Terminado |
 
-## Convenciones
-
-- Ramas: `main`, `feature/nombre-funcionalidad`, `fix/nombre-error`
-- Commits: verbo en infinitivo que describa el cambio (ej. *Agregar formulario de platos*)
