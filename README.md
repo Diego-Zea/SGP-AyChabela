@@ -10,7 +10,7 @@ Proyecto integrador del curso **Herramientas de Desarrollo** – Universidad Tec
 |---|---|
 | Diego Zea | Responsable de repositorio |
 | Ruben Eufracio | Responsable funcional |
-| Daysi Zarate | Responsable de calidad y documentación |
+| Daysi Galvez | Responsable de calidad y documentación |
 
 ## Problema
 
@@ -34,7 +34,7 @@ El restaurante Ay Chabela registra los pedidos de sus clientes de forma manual, 
 
 1. Clonar el repositorio:
    ```bash
-   git clone <URL_DEL_REPOSITORIO>
+   git clone https://github.com/Diego-Zea/SGP-AyChabela.git
    ```
 2. Ejecutar en MySQL los scripts de la carpeta `database/` **en orden numérico** (`01_`, `02_`, ...).
 3. Revisar usuario y contraseña de MySQL en `src/java/capaDatos/ConexionBD.java`.
