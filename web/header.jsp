@@ -12,6 +12,7 @@
         ? "" : request.getAttribute("paginaActual").toString();
     // Permisos por modulo, centralizados en la clase Acceso
     boolean verPlatos   = Acceso.tieneRol(usuarioSesion, "ADMIN", "MESERO", "COCINA");
+    boolean verPedidos  = Acceso.tieneRol(usuarioSesion, "ADMIN", "MESERO", "COCINA");
     boolean verUsuarios = Acceso.tieneRol(usuarioSesion, "ADMIN");
 %>
 <header class="header">
@@ -30,5 +31,10 @@
     <% } %>
     <% if (verUsuarios) { %>
     <a href="UsuarioServlet" class="<%= "usuarios".equals(paginaActual) ? "activo" : "" %>">Usuarios</a>
+    <% } %>
+    <% if (verPedidos) { %>
+    <a href="PedidoServlet"
+    class="<%= "pedidos".equals(paginaActual) ? "activo" : "" %>"> Pedidos
+    </a>
     <% } %>
 </nav>
