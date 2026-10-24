@@ -19,10 +19,15 @@ public class PlatoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        if (!sesionValida(req, resp)) return;
+        if (Acceso.actual(req) == null) {
+            resp.sendRedirect("login.jsp");
+            return;
+        }
 
         String accion = req.getParameter("accion");
-        if (accion == null) accion = "listar";
+        if (accion == null) {
+            accion = "listar";
+        }
 
         switch (accion) {
             case "nuevo":
@@ -51,7 +56,10 @@ public class PlatoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        if (!sesionValida(req, resp)) return;
+        if (Acceso.actual(req) == null) {
+            resp.sendRedirect("login.jsp");
+            return;
+        }
 
         String idTxt = req.getParameter("id");
 
@@ -69,7 +77,7 @@ public class PlatoServlet extends HttpServlet {
             p.setCategoriaId(0);
         }
         p.setDisponible("on".equals(req.getParameter("disponible"))
-                     || "true".equals(req.getParameter("disponible")));
+                || "true".equals(req.getParameter("disponible")));
 
         if (idTxt == null || idTxt.isEmpty()) {
             negocio.insertar(p);
@@ -80,12 +88,4 @@ public class PlatoServlet extends HttpServlet {
         resp.sendRedirect("PlatoServlet");
     }
 
-    private boolean sesionValida(HttpServletRequest req, HttpServletResponse resp)
-            throws IOException {
-        if (req.getSession(false) == null || req.getSession().getAttribute("usuario") == null) {
-            resp.sendRedirect("login.jsp");
-            return false;
-        }
-        return true;
-    }
 }
