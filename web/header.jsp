@@ -16,6 +16,7 @@
     // Permisos por modulo
     boolean verPlatos   = esAdmin || esMesero || esCocina;
     boolean verUsuarios = esAdmin;
+    boolean verPedidos = esAdmin || esMesero || esCocina;
 %>
 <header class="header">
     <h1>Ay Chabela - SGP</h1>
@@ -33,5 +34,10 @@
     <% } %>
     <% if (verUsuarios) { %>
     <a href="UsuarioServlet" class="<%= "usuarios".equals(paginaActual) ? "activo" : "" %>">Usuarios</a>
+    <% } %>
+    <% if (verPedidos) { %>
+    <a href="PedidoServlet"
+    class="<%= "pedidos".equals(paginaActual) ? "activo" : "" %>"> Pedidos
+    </a>
     <% } %>
 </nav>
