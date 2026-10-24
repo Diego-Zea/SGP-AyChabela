@@ -25,10 +25,8 @@ public class PedidoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        if (req.getSession(false) == null || req.getSession().getAttribute("usuario") == null) {
-            resp.sendRedirect("login.jsp");
-            return;
-        }
+            if (Acceso.actual(req) == null) { resp.sendRedirect("login.jsp"); return; 
+            }
 
         String accion = req.getParameter("accion");
         if (accion == null) accion = "listar";
@@ -59,13 +57,10 @@ public class PedidoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws ServletException, IOException {
-        if (req.getSession(false) == null || req.getSession().getAttribute("usuario") == null) {
-            resp.sendRedirect("login.jsp");
-            return;
-        }
-        Usuario u = (Usuario) req.getSession().getAttribute("usuario");
-
+            throws ServletException, IOException 
+    {
+                Usuario u = Acceso.actual(req);
+        if (u == null) { resp.sendRedirect("login.jsp"); return; }
         Pedido pedido = new Pedido();
         try {
             pedido.setMesaId(Integer.parseInt(req.getParameter("mesaId")));
