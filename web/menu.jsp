@@ -61,6 +61,15 @@
                                                     </div>
                                                 </a>
                                                 <% } %>
+                                                <% if (adminMenu || cocinaMenu) { %>
+    <a href="CocinaServlet">
+        <div class="menu-card">
+            <div class="icono">&#127859;</div>
+            <h3>Cocina</h3>
+            <p>Pedidos en preparacion</p>
+        </div>
+    </a>
+<% } %>
                         </div>
                     </div>
 
