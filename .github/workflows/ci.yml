@@ -1,0 +1,61 @@
+name: CI
+
+# Se ejecuta en cada push a main y en cada Pull Request dirigido a main.
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  construir-y-probar:
+    name: Construir y probar
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el codigo
+        uses: actions/checkout@v4
+
+      - name: Preparar Java 8
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+
+      - name: Descargar dependencias
+        run: |
+          mkdir -p ci-lib
+          curl -sSL -o ci-lib/servlet-api.jar https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar
+          curl -sSL -o ci-lib/junit.jar        https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar
+          curl -sSL -o ci-lib/hamcrest.jar     https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+
+      - name: Compilar la aplicacion
+        run: |
+          mkdir -p build-ci/classes
+          find src/java -name "*.java" > fuentes.txt
+          echo "Archivos a compilar: $(wc -l < fuentes.txt)"
+          javac -encoding UTF-8 -nowarn \
+            -cp "ci-lib/servlet-api.jar:web/WEB-INF/lib/mysql-connector-j-9.7.0.jar" \
+            -d build-ci/classes @fuentes.txt
+
+      - name: Compilar las pruebas
+        run: |
+          mkdir -p build-ci/test-classes
+          find test -name "*.java" > pruebas.txt
+          javac -encoding UTF-8 -nowarn \
+            -cp "build-ci/classes:ci-lib/junit.jar:ci-lib/hamcrest.jar:ci-lib/servlet-api.jar" \
+            -d build-ci/test-classes @pruebas.txt
+
+      - name: Ejecutar las pruebas unitarias
+        run: |
+          java -cp "build-ci/classes:build-ci/test-classes:ci-lib/junit.jar:ci-lib/hamcrest.jar:ci-lib/servlet-api.jar" \
+            org.junit.runner.JUnitCore pruebas.AccesoTest
+
+      - name: Verificar los scripts de base de datos
+        run: |
+          echo "Scripts encontrados:"
+          ls -1 database/*.sql
+          for f in database/*.sql; do
+            grep -q "USE aychabela;" "$f" || { echo "ERROR: $f no indica USE aychabela;"; exit 1; }
+          done
+          echo "Todos los scripts apuntan a la base correcta."
