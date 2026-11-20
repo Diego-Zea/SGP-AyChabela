@@ -25,9 +25,24 @@ jobs:
       - name: Descargar dependencias
         run: |
           mkdir -p ci-lib
-          curl -sSL -o ci-lib/servlet-api.jar https://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar
-          curl -sSL -o ci-lib/junit.jar        https://repo1.maven.org/maven2/junit/junit/4.13.2/junit-4.13.2.jar
-          curl -sSL -o ci-lib/hamcrest.jar     https://repo1.maven.org/maven2/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar
+          # Descarga una libreria y comprueba que sea un jar valido antes de seguir.
+          descargar() {
+            url="https://repo1.maven.org/maven2/$1"
+            echo "Descargando $2 desde $url"
+            curl -fsSL --retry 3 --retry-delay 3 -o "ci-lib/$2" "$url" || {
+              echo "ERROR: no se pudo descargar $url"
+              exit 1
+            }
+            unzip -tq "ci-lib/$2" > /dev/null || {
+              echo "ERROR: ci-lib/$2 no es un jar valido. Esto llego:"
+              head -c 400 "ci-lib/$2"
+              exit 1
+            }
+          }
+          descargar javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1.jar servlet-api.jar
+          descargar junit/junit/4.13.2/junit-4.13.2.jar junit.jar
+          descargar org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar hamcrest.jar
+          ls -l ci-lib
 
       - name: Compilar la aplicacion
         run: |
