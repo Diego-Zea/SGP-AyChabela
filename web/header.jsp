@@ -13,6 +13,7 @@
     // Permisos por modulo, centralizados en la clase Acceso
     boolean verPlatos   = Acceso.tieneRol(usuarioSesion, "ADMIN", "MESERO", "COCINA");
     boolean verPedidos  = Acceso.tieneRol(usuarioSesion, "ADMIN", "MESERO", "COCINA");
+    boolean verCocina   = Acceso.tieneRol(usuarioSesion, "ADMIN", "COCINA");
     boolean verUsuarios = Acceso.tieneRol(usuarioSesion, "ADMIN");
 %>
 <header class="header">
@@ -33,8 +34,9 @@
     <a href="UsuarioServlet" class="<%= "usuarios".equals(paginaActual) ? "activo" : "" %>">Usuarios</a>
     <% } %>
     <% if (verPedidos) { %>
-    <a href="PedidoServlet"
-    class="<%= "pedidos".equals(paginaActual) ? "activo" : "" %>"> Pedidos
-    </a>
+    <a href="PedidoServlet"  class="<%= "pedidos".equals(paginaActual) ? "activo" : "" %>"> Pedidos</a>
+    <% } %>
+    <% if (verCocina) { %>
+    <a href="CocinaServlet"  class="<%= "cocina".equals(paginaActual)   ? "activo" : "" %>">Cocina</a>
     <% } %>
 </nav>
