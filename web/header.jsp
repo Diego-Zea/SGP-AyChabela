@@ -14,6 +14,7 @@
     boolean verPlatos   = Acceso.tieneRol(usuarioSesion, "ADMIN", "MESERO", "COCINA");
     boolean verPedidos  = Acceso.tieneRol(usuarioSesion, "ADMIN", "MESERO", "COCINA");
     boolean verCocina   = Acceso.tieneRol(usuarioSesion, "ADMIN", "COCINA");
+    boolean verInsumos  = Acceso.tieneRol(usuarioSesion, "ADMIN", "COCINA");
     boolean verUsuarios = Acceso.tieneRol(usuarioSesion, "ADMIN");
 %>
 <header class="header">
@@ -38,5 +39,8 @@
     <% } %>
     <% if (verCocina) { %>
     <a href="CocinaServlet"  class="<%= "cocina".equals(paginaActual)   ? "activo" : "" %>">Cocina</a>
+    <% } %>
+    <% if (verInsumos) { %>
+    <a href="InsumoServlet"  class="<%= "insumos".equals(paginaActual)  ? "activo" : "" %>">Insumos</a>
     <% } %>
 </nav>

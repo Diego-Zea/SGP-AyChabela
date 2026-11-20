@@ -70,6 +70,15 @@
         </div>
     </a>
 <% } %>
+                                <% if (adminMenu || cocinaMenu) { %>
+                                    <a href="InsumoServlet">
+                                        <div class="menu-card">
+                                            <div class="icono">&#128230;</div>
+                                            <h3>Insumos</h3>
+                                            <p>Inventario y recetas de los platos</p>
+                                        </div>
+                                    </a>
+                                <% } %>
                         </div>
                     </div>
 
