@@ -16,11 +16,11 @@ jobs:
       - name: Descargar el codigo
         uses: actions/checkout@v4
 
-      - name: Preparar Java 8
+      - name: Preparar Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '8'
+          java-version: '21'
 
       - name: Descargar dependencias
         run: |
@@ -49,7 +49,7 @@ jobs:
           mkdir -p build-ci/classes
           find src/java -name "*.java" > fuentes.txt
           echo "Archivos a compilar: $(wc -l < fuentes.txt)"
-          javac -encoding UTF-8 -nowarn \
+          javac --release 8 -encoding UTF-8 -nowarn \
             -cp "ci-lib/servlet-api.jar:web/WEB-INF/lib/mysql-connector-j-9.7.0.jar" \
             -d build-ci/classes @fuentes.txt
 
@@ -57,7 +57,7 @@ jobs:
         run: |
           mkdir -p build-ci/test-classes
           find test -name "*.java" > pruebas.txt
-          javac -encoding UTF-8 -nowarn \
+          javac --release 8 -encoding UTF-8 -nowarn \
             -cp "build-ci/classes:ci-lib/junit.jar:ci-lib/hamcrest.jar:ci-lib/servlet-api.jar" \
             -d build-ci/test-classes @pruebas.txt
 
